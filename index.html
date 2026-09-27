@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#080b18" />
+    <title>NEON BLOCKS — 俄罗斯方块</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Neon Blocks 首页">
+          <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          <span>NEON<span class="brand-light">BLOCKS</span></span>
+        </a>
+        <div class="top-meta"><span class="live-dot"></span> ARCADE SYSTEM <span class="top-divider">/</span> 01 PLAYER</div>
+      </header>
+
+      <section class="intro" aria-labelledby="game-title">
+        <div class="eyebrow"><span></span> CLASSIC MODE · 1984</div>
+        <h1 id="game-title">BLOCK<span>_</span>DROP</h1>
+        <p>排列方块，消除整行。准备好进入霓虹街机世界了吗？</p>
+      </section>
+
+      <section class="game-layout" aria-label="俄罗斯方块游戏">
+        <aside class="side-panel left-panel">
+          <div class="panel-label">难度选择 <span>LEVEL SELECT</span></div>
+          <div class="difficulty-list" role="group" aria-label="选择游戏难度">
+            <button class="difficulty active" data-level="easy" type="button"><span class="level-number">01</span><span class="level-copy"><b>简单</b><small>EASY</small></span><span class="level-led"></span></button>
+            <button class="difficulty" data-level="normal" type="button"><span class="level-number">02</span><span class="level-copy"><b>普通</b><small>NORMAL</small></span><span class="level-led"></span></button>
+            <button class="difficulty" data-level="hard" type="button"><span class="level-number">03</span><span class="level-copy"><b>困难</b><small>HARD</small></span><span class="level-led"></span></button>
+          </div>
+
+          <div class="panel-label size-heading">棋盘尺寸 <span>GRID SIZE</span></div>
+          <div class="size-list" role="group" aria-label="选择棋盘尺寸">
+            <button class="size-option" data-size="small" type="button"><b>小</b><small>8 × 16</small></button>
+            <button class="size-option active" data-size="classic" type="button"><b>标准</b><small>10 × 20</small></button>
+            <button class="size-option" data-size="large" type="button"><b>大</b><small>12 × 24</small></button>
+          </div>
+
+          <div class="stats-card">
+            <div class="panel-label">本局数据 <span>SESSION DATA</span></div>
+            <div class="stat-row"><span>得分 <small>SCORE</small></span><strong id="score">000000</strong></div>
+            <div class="stat-row"><span>消除行数 <small>LINES</small></span><strong id="lines">00</strong></div>
+            <div class="stat-row"><span>当前等级 <small>LEVEL</small></span><strong id="level">01</strong></div>
+          </div>
+
+          <div class="next-card">
+            <div class="panel-label">下一个 <span>NEXT PIECE</span></div>
+            <canvas id="next" width="132" height="100" aria-label="下一个方块预览"></canvas>
+          </div>
+        </aside>
+
+        <div class="board-wrap">
+          <div class="board-topline"><span><i class="live-dot"></i> LIVE GRID</span><span id="board-dimensions">10 × 20</span></div>
+          <div class="board-frame">
+            <canvas id="board" width="300" height="600" aria-label="俄罗斯方块棋盘" role="img"></canvas>
+            <div class="game-overlay" id="overlay">
+              <div class="overlay-card">
+                <div class="overlay-kicker" id="overlay-kicker">SYSTEM READY</div>
+                <h2 id="overlay-title">准备开始？</h2>
+                <p id="overlay-copy">选择难度，开启你的第一局。</p>
+                <button class="primary-button" id="start" type="button"><span>▶</span> 开始游戏</button>
+              </div>
+            </div>
+          </div>
+          <div class="board-bottomline"><span>NEON ARCADE <b>© 1984 / 2025</b></span><span>INSERT COIN <i>◆</i></span></div>
+        </div>
+
+        <aside class="side-panel right-panel">
+          <div class="panel-label">操作指南 <span>HOW TO PLAY</span></div>
+          <div class="controls-card">
+            <div class="control-row"><span class="key-group"><kbd>←</kbd><kbd>→</kbd></span><span>移动 <small>MOVE</small></span></div>
+            <div class="control-row"><kbd>↑</kbd><span>旋转 <small>ROTATE</small></span></div>
+            <div class="control-row"><kbd>↓</kbd><span>加速下落 <small>SOFT DROP</small></span></div>
+            <div class="control-row"><kbd class="wide-key">SPACE</kbd><span>瞬间下落 <small>HARD DROP</small></span></div>
+            <div class="control-row"><kbd>P</kbd><span>暂停游戏 <small>PAUSE</small></span></div>
+          </div>
+
+          <div class="action-card">
+            <div class="panel-label">游戏控制 <span>GAME CONTROL</span></div>
+            <button class="secondary-button" id="pause" type="button" disabled><span>Ⅱ</span> 暂停游戏</button>
+            <button class="secondary-button" id="restart" type="button"><span>↻</span> 重新开始</button>
+          </div>
+
+          <div class="tip-card"><span class="tip-icon">✦</span><p>消除多行获得更高分数。每消除 10 行，速度将会提升。</p></div>
+        </aside>
+      </section>
+
+      <footer class="footer"><span>BUILT FOR THE NIGHT OWLS</span><span>PRESS <b>P</b> TO PAUSE</span></footer>
+    </main>
+    <script defer src="game.js"></script>
+  </body>
+</html>
